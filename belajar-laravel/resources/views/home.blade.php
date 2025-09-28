@@ -13,7 +13,7 @@
         <h1 class="text-4xl md:text-6xl font-bold max-w-2xl leading-tight">
             KPPU selesaikan proses transformasi kepegawaiannya
         </h1>
-        <a href="/berita" class="mt-6 border border-white px-8 py-3 w-max hover:bg-white hover:text-black transition duration-300">
+        <a href="/berita.blade.php" class="mt-6 border border-white px-8 py-3 w-max hover:bg-white hover:text-black transition duration-300">
             Baca Selengkapnya
         </a>
     </div>

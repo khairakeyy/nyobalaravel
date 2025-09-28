@@ -1,7 +1,8 @@
-{{-- File: resources/views/layouts/app.blade.php --}}
+{{-- File: resources/views/layouts/app.blade.php (Versi Final) --}}
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,19 +13,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8f9fa;
         }
     </style>
 </head>
-<body class="bg-gray-100">
+
+<body class="bg-gray-100 flex flex-col min-h-screen"> {{-- Tambahkan flex-col dan min-h-screen --}}
 
     <header class="bg-white shadow-sm">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="/">
-                    <img src="https://kppu.go.id/wp-content/uploads/2018/09/logo-kppu.png" alt="KPPU Logo" class="h-10">
+                {{-- DIUBAH: Menggunakan logo dari asset lokal --}}
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('assets/logo.png') }}" alt="KPPU Logo" class="h-10">
                 </a>
                 <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold text-gray-700">
                     <a href="#" class="hover:text-blue-700">TENTANG KAMI</a>
@@ -44,37 +48,25 @@
         </div>
     </header>
 
-    <section class="bg-[#0a2240]">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center space-x-8">
-                <h3 class="text-white font-bold text-md">Akses Cepat</h3>
-                <div class="flex items-center space-x-8 text-sm text-gray-300">
-                    <a href="#" class="hover:text-white">Lapor Pelanggaran</a>
-                    <a href="#" class="hover:text-white">Putusan</a>
-                    <a href="#" class="hover:text-white">Jadwal Sidang</a>
-                    <a href="#" class="hover:text-white">Siaran Pers</a>
-                    <a href="#" class="hover:text-white">Materi Edukasi</a>
-                    <a href="#" class="hover:text-white">Notifikasi Merger</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    {{-- Hapus section 'Akses Cepat' dan 'Running Text' dari layout utama --}}
+    {{-- Biarkan bagian ini diisi oleh halaman konten jika diperlukan --}}
 
-    <section class="bg-red-600">
-        <div class="container mx-auto px-6 py-2">
-            <div class="flex items-center text-white text-sm">
-                <marquee behavior="scroll" direction="left">Segera Laporkan Transaksi Penggabungan, Peleburan, dan Pengambilalihan Saham Melalui https://notifikasi.kppu.go.id !</marquee>
-            </div>
-        </div>
-    </section>
+    {{-- Wrapper utama untuk konten dan footer --}}
+    <div class="flex-grow">
+        <main>
+            @yield('content')
+        </main>
+    </div>
 
-    <main>
-        @yield('content')
-    </main>
 
-    <div class="fixed bottom-6 right-6">
-        <img src="https://statik.tempo.co/data/2016/06/20/id_516906/516906_620.jpg" alt="KPPU Logo" class="h-10">
+    {{-- DITAMBAHKAN: Memanggil file footer --}}
+    @include('layouts.partials.footer')
+
+    {{-- DIPERBAIKI: Kode untuk maskot --}}
+    <div class="fixed bottom-6 right-6 z-50">
+        <img src="{{ asset('assets/maskot.png') }}" alt="KPPU Maskot" class="h-25">
     </div>
 
 </body>
+
 </html>

@@ -8,4 +8,4 @@ Route::get('/about', function () {return view('about');});
 // Route::get('/', [PageController::class, 'home']);
 Route::get('/about', [PageController::class, 'about']);
 Route::get('/berita', function () {return view('berita');});
-Route::get('/', function () {return view('home');});
+Route::get('/', function () {return view('home');})->name('home'); // <--- TAMBAHKAN INI
